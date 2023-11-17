@@ -1,7 +1,7 @@
 # PokéYou
 
 PokéYou =>
-[![Pokedex](https://img.shields.io/website-up-down-green-red/http/monip.org.svg)]()
+[![Pokedex](https://img.shields.io/website-up-down-green-red/http/monip.org.svg)](https://th3uss.github.io/PokeYou/)
 
 ### Descubra qual pokémon você é!
 
