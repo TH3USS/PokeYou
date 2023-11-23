@@ -7,6 +7,11 @@ const input = document.querySelector('.input_search');
 const buttonPrev = document.querySelector('.btn-prev');
 const buttonNext = document.querySelector('.btn-next');
 
+
+var a = input.value.toString().split("");
+console.log(a);
+
+
 let searchPokemon = 1;
 
 const fetchPokemon = async (pokemon) => {
@@ -29,8 +34,8 @@ const renderPokemon = async (pokemon) => {
     pokemonImage.style.display = 'block';
     pokemonName.innerHTML = data.name;
     pokemonNumber.innerHTML = data.id;
-    pokemonImage.src = data['sprites']['versions']['generation-v']['black-white']['animated']['front_default'];
-    input.value = '';
+    pokemonImage.src = data['sprites']['versions']['generation-v']['black-white']['animated']['front_default'];    
+    //input.value = '';    
     searchPokemon = data.id;
   } else {
     pokemonImage.style.display = 'none';
@@ -40,20 +45,30 @@ const renderPokemon = async (pokemon) => {
   
 }
 
-form.addEventListener('submit', (event) =>{
+form.addEventListener('input', (event) =>{
   event.preventDefault();
-  renderPokemon(input.value.toLowerCase());
+  var a = input.value.toString().split("");
+  console.log(a);
+  console.log(`${a[9]}${a[6]}${a[3]}`);
+  if(a[9] != 0){
+    renderPokemon(`${a[9]}${a[6]}${a[3]}`);
+  } else {
+    renderPokemon(`${a[6]}${a[3]}`);
+  }
+  
 });
 
 buttonPrev.addEventListener('click', () => {
   if (searchPokemon > 1) {
     searchPokemon -= 1;
+    input.value = '';
     renderPokemon(searchPokemon);
   }
 });
 
 buttonNext.addEventListener('click', () => {
   searchPokemon += 1;
+  input.value = '';
   renderPokemon(searchPokemon);
 });
 
